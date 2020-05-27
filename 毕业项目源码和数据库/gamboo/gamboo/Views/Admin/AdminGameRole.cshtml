@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+@using gamboo.Models
+@model List<GameRole>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminGameRole</title>
+    <link href="~/Content/GameRole.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        <table class="table " border="1">
+            <tr>
+                <td>姓名</td>
+                <td>职业</td>
+                <td>阵营</td>
+                <td>图片</td>
+                <td>角色管理</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.rName</td>
+                    <td>
+                        @if (item.occupation == 1)
+                        {
+                            @:冒险系
+                        }else if (item.occupation==2)
+                        {
+                            @:战斗系
+                        }else  
+                        {
+                            @:魔法系
+                        } 
+                    </td>
+                    <td>
+                        @if (item.camp == 1)
+                        {
+                            @:奥鲁维之刃
+                        }
+                        else if (item.camp == 2)
+                        {
+                            @:卡纳斯的启示
+                        }
+                        else if (item.camp == 3)
+                        {
+                            @:游荡者之歌
+                        }
+                        else
+                        {
+                            @:深渊的咆哮
+                        }
+                    </td>
+                    <td><img src="~/image/@item.img" height="50" width="50"/></td>
+                    <td>
+                        <a href="~/Admin/MinuteGameRole?id=@item.rID">查看详情</a>
+                        <a href="~/Admin/DeleteGameRole?id=@item.rID">删除</a>
+                        <a href="~/Admin/EditGameRole?id=@item.rID">修改</a>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

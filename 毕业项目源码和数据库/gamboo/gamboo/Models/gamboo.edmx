@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gambooModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Essays">
+          <Key>
+            <PropertyRef Name="tID" />
+          </Key>
+          <Property Name="tID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uID" Type="int" Nullable="false" />
+          <Property Name="eTitle" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="eEssay" Type="nvarchar(max)" />
+          <Property Name="eTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="eID" />
+          </Key>
+          <Property Name="eID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eSubstance" Type="nvarchar(max)" />
+          <Property Name="eTime" Type="datetime" Nullable="false" />
+          <Property Name="mID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameRole">
+          <Key>
+            <PropertyRef Name="rID" />
+          </Key>
+          <Property Name="rID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rName" Type="nvarchar" MaxLength="20" />
+          <Property Name="occupation" Type="int" />
+          <Property Name="camp" Type="int" />
+          <Property Name="passive" Type="nvarchar" MaxLength="40" />
+          <Property Name="Initiative" Type="nvarchar(max)" />
+          <Property Name="acquire" Type="nvarchar" MaxLength="20" />
+          <Property Name="img" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="mID" />
+          </Key>
+          <Property Name="mID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="mLoginName" Type="nvarchar" MaxLength="20" />
+          <Property Name="mLoginPwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uID" />
+          </Key>
+          <Property Name="uID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="uLoginName" Type="nvarchar" MaxLength="20" />
+          <Property Name="uLoginPwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="vID" />
+          </Key>
+          <Property Name="vID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uID" Type="int" Nullable="false" />
+          <Property Name="src" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="vTitle" Type="nvarchar" MaxLength="40" />
+          <Property Name="vTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Essays_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Essays" Type="Self.Essays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uID" />
+            </Principal>
+            <Dependent Role="Essays">
+              <PropertyRef Name="uID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exercise_Manager">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="mID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="mID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="uID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gambooModelStoreContainer">
+          <EntitySet Name="Essays" EntityType="Self.Essays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameRole" EntityType="Self.GameRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Essays_User" Association="Self.FK_Essays_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Essays" EntitySet="Essays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exercise_Manager" Association="Self.FK_Exercise_Manager">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_User" Association="Self.FK_Video_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gambooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Essays">
+          <Key>
+            <PropertyRef Name="tID" />
+          </Key>
+          <Property Name="tID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uID" Type="Int32" Nullable="false" />
+          <Property Name="eTitle" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="eEssay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Essays_User" FromRole="Essays" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="eID" />
+          </Key>
+          <Property Name="eID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="eSubstance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Manager" Relationship="Self.FK_Exercise_Manager" FromRole="Exercise" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="GameRole">
+          <Key>
+            <PropertyRef Name="rID" />
+          </Key>
+          <Property Name="rID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="occupation" Type="Int32" />
+          <Property Name="camp" Type="Int32" />
+          <Property Name="passive" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Initiative" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="acquire" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="mID" />
+          </Key>
+          <Property Name="mID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mLoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mLoginPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK_Exercise_Manager" FromRole="Manager" ToRole="Exercise" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uID" />
+          </Key>
+          <Property Name="uID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="uLoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="uLoginPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Essays" Relationship="Self.FK_Essays_User" FromRole="User" ToRole="Essays" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_Video_User" FromRole="User" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="vID" />
+          </Key>
+          <Property Name="vID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uID" Type="Int32" Nullable="false" />
+          <Property Name="src" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vTitle" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="vTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Video_User" FromRole="Video" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Essays_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Essays" Type="Self.Essays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uID" />
+            </Principal>
+            <Dependent Role="Essays">
+              <PropertyRef Name="uID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exercise_Manager">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="mID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="mID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="uID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gambooEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Essays" EntityType="Self.Essays" />
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" />
+          <EntitySet Name="GameRole" EntityType="Self.GameRole" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <AssociationSet Name="FK_Essays_User" Association="Self.FK_Essays_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Essays" EntitySet="Essays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exercise_Manager" Association="Self.FK_Exercise_Manager">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_User" Association="Self.FK_Video_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gambooModelStoreContainer" CdmEntityContainer="gambooEntities">
+          <EntitySetMapping Name="Essays">
+            <EntityTypeMapping TypeName="gambooModel.Essays">
+              <MappingFragment StoreEntitySet="Essays">
+                <ScalarProperty Name="tID" ColumnName="tID" />
+                <ScalarProperty Name="uID" ColumnName="uID" />
+                <ScalarProperty Name="eTitle" ColumnName="eTitle" />
+                <ScalarProperty Name="eEssay" ColumnName="eEssay" />
+                <ScalarProperty Name="eTime" ColumnName="eTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise">
+            <EntityTypeMapping TypeName="gambooModel.Exercise">
+              <MappingFragment StoreEntitySet="Exercise">
+                <ScalarProperty Name="eID" ColumnName="eID" />
+                <ScalarProperty Name="eName" ColumnName="eName" />
+                <ScalarProperty Name="eSubstance" ColumnName="eSubstance" />
+                <ScalarProperty Name="eTime" ColumnName="eTime" />
+                <ScalarProperty Name="mID" ColumnName="mID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameRole">
+            <EntityTypeMapping TypeName="gambooModel.GameRole">
+              <MappingFragment StoreEntitySet="GameRole">
+                <ScalarProperty Name="rID" ColumnName="rID" />
+                <ScalarProperty Name="rName" ColumnName="rName" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="camp" ColumnName="camp" />
+                <ScalarProperty Name="passive" ColumnName="passive" />
+                <ScalarProperty Name="Initiative" ColumnName="Initiative" />
+                <ScalarProperty Name="acquire" ColumnName="acquire" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager">
+            <EntityTypeMapping TypeName="gambooModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="mID" ColumnName="mID" />
+                <ScalarProperty Name="mName" ColumnName="mName" />
+                <ScalarProperty Name="mLoginName" ColumnName="mLoginName" />
+                <ScalarProperty Name="mLoginPwd" ColumnName="mLoginPwd" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="gambooModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="uID" ColumnName="uID" />
+                <ScalarProperty Name="uName" ColumnName="uName" />
+                <ScalarProperty Name="uLoginName" ColumnName="uLoginName" />
+                <ScalarProperty Name="uLoginPwd" ColumnName="uLoginPwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="gambooModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="vID" ColumnName="vID" />
+                <ScalarProperty Name="uID" ColumnName="uID" />
+                <ScalarProperty Name="src" ColumnName="src" />
+                <ScalarProperty Name="vTitle" ColumnName="vTitle" />
+                <ScalarProperty Name="vTime" ColumnName="vTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

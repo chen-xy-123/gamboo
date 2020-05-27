@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gambooModelStoreContainer" CdmEntityContainer="gambooEntities">
+    <EntitySetMapping Name="Essays">
+      <EntityTypeMapping TypeName="gambooModel.Essays">
+        <MappingFragment StoreEntitySet="Essays">
+          <ScalarProperty Name="tID" ColumnName="tID" />
+          <ScalarProperty Name="uID" ColumnName="uID" />
+          <ScalarProperty Name="eTitle" ColumnName="eTitle" />
+          <ScalarProperty Name="eEssay" ColumnName="eEssay" />
+          <ScalarProperty Name="eTime" ColumnName="eTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise">
+      <EntityTypeMapping TypeName="gambooModel.Exercise">
+        <MappingFragment StoreEntitySet="Exercise">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eSubstance" ColumnName="eSubstance" />
+          <ScalarProperty Name="eTime" ColumnName="eTime" />
+          <ScalarProperty Name="mID" ColumnName="mID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameRole">
+      <EntityTypeMapping TypeName="gambooModel.GameRole">
+        <MappingFragment StoreEntitySet="GameRole">
+          <ScalarProperty Name="rID" ColumnName="rID" />
+          <ScalarProperty Name="rName" ColumnName="rName" />
+          <ScalarProperty Name="occupation" ColumnName="occupation" />
+          <ScalarProperty Name="camp" ColumnName="camp" />
+          <ScalarProperty Name="passive" ColumnName="passive" />
+          <ScalarProperty Name="Initiative" ColumnName="Initiative" />
+          <ScalarProperty Name="acquire" ColumnName="acquire" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manager">
+      <EntityTypeMapping TypeName="gambooModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="mID" ColumnName="mID" />
+          <ScalarProperty Name="mName" ColumnName="mName" />
+          <ScalarProperty Name="mLoginName" ColumnName="mLoginName" />
+          <ScalarProperty Name="mLoginPwd" ColumnName="mLoginPwd" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="gambooModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="uID" ColumnName="uID" />
+          <ScalarProperty Name="uName" ColumnName="uName" />
+          <ScalarProperty Name="uLoginName" ColumnName="uLoginName" />
+          <ScalarProperty Name="uLoginPwd" ColumnName="uLoginPwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Video">
+      <EntityTypeMapping TypeName="gambooModel.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="vID" ColumnName="vID" />
+          <ScalarProperty Name="uID" ColumnName="uID" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="vTitle" ColumnName="vTitle" />
+          <ScalarProperty Name="vTime" ColumnName="vTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

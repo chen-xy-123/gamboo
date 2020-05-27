@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+@using gamboo.Models
+@model GameRole
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MinuteGameRole</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <td>名称</td>
+                <td>@Model.rName</td>
+            </tr>
+            <tr>
+                <td>职业</td>
+                <td>
+                    @if (Model.occupation == 1)
+                    {
+                        @:冒险系
+                    }
+                    else if (Model.occupation == 2)
+                    {
+                        @:战斗系
+                    }
+                    else
+                    {
+                        @:魔法系
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>阵营</td>
+                <td>
+                    @if (Model.camp == 1)
+                    {
+                        @:奥鲁维之刃
+                    }
+                    else if (Model.camp == 2)
+                    {
+                        @:卡纳斯的启示
+                    }
+                    else if (Model.camp == 3)
+                    {
+                        @:游荡者之歌
+                    }
+                    else
+                    {
+                        @:深渊的咆哮
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>天赋</td>
+                <td>@Model.passive</td>
+            </tr>
+            <tr>
+                <td>技能</td>
+                <td>@Model.Initiative</td>
+            </tr>
+            <tr>
+                <td>获取方式</td>
+                <td>@Model.acquire</td>
+            </tr>
+            <tr>
+                <td>图片</td>
+                <td><img src="~/image/@Model.img" height="50" width="50" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

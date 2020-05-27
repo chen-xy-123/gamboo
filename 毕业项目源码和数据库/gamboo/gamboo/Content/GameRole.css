@@ -1,0 +1,22 @@
+﻿* {
+    margin: 0px auto;
+    list-style: none;
+}
+
+.yy {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+    .yy li {
+        border: 1px solid #808080
+    }
+
+        .yy li img {
+            width: 100px;
+            height: 100px;
+        }
+
+    .yy a {
+        display: block;
+    }

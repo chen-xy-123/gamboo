@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gamboo", "gamboo.csproj", "{B3654F95-B674-4C84-BF98-78FDDF2A3433}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3654F95-B674-4C84-BF98-78FDDF2A3433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3654F95-B674-4C84-BF98-78FDDF2A3433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3654F95-B674-4C84-BF98-78FDDF2A3433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3654F95-B674-4C84-BF98-78FDDF2A3433}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7749C639-3EB8-4FA4-B62E-53F296728F29}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using gamboo.Models;
+@model List<GameRole>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Role</title>
+    <link href="~/Content/GameRole.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <ul class="yy">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="#">
+                        <img src="~/image/@item.img" />
+                        @item.rName
+                    </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+
+</body>
+</html>
